@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Card() {
-  return <div className="font-oswald">Hello world</div>;
+export default function Card({ message }) {
+  return <div className="font-oswald">{message}</div>;
 }

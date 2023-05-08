@@ -1,26 +1,4 @@
 ---
 ---
 
-<div>
-  <button id="open-btn">Open</button>
-  <dialog data-modal>
-    <h1>Hello World</h1>
-    <button id="close-btn">Close</button>
-  </dialog>
-</div>
-
-<script>
-  const modal: HTMLDialogElement | null =
-    document.querySelector("[data-modal]");
-  const btn: HTMLButtonElement | null = document.querySelector("#open-btn");
-  const btnClose: HTMLButtonElement | null =
-    document.querySelector("#close-btn");
-
-  btnClose?.addEventListener("click", () => {
-    modal?.close();
-  });
-
-  btn?.addEventListener("click", () => {
-    modal?.showModal();
-  });
-</script>
+<h1>about page</h1>
