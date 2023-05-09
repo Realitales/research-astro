@@ -1,6 +1,4 @@
-import React from "react";
-
-export const Card = ({ message }: any) => {
+export const Card = ({ message }: { message: string }) => {
   return <div className="font-oswald">{message}</div>;
 };
 
