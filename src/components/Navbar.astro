@@ -1,0 +1,15 @@
+---
+import routes from "../utils/routes.ts";
+---
+
+<nav>
+  <ul>
+    {
+      routes.map((route) => (
+        <li>
+          <a href={route.path}>{route.name}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
