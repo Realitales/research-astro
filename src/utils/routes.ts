@@ -3,6 +3,8 @@ interface Routes {
   path: string;
 }
 
+//Use this file to add and modify routes.
+
 export const routes: Routes[] = [
   {
     name: "about",
@@ -11,6 +13,10 @@ export const routes: Routes[] = [
   {
     name: "test-ground",
     path: "/test-ground",
+  },
+  {
+    name: "cars",
+    path: "/cars",
   },
 ];
 
