@@ -1,13 +1,14 @@
 ---
+import Layout from "@layouts/BaseLayout.astro";
 ---
 
-<div>
+<Layout title="Research Astro - Test Ground">
   <button id="open-btn">Open</button>
   <dialog data-modal>
     <h1>Hello World</h1>
     <button id="close-btn">Close</button>
   </dialog>
-</div>
+</Layout>
 
 <script>
   const modal: HTMLDialogElement | null =

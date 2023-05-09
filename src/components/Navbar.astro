@@ -2,12 +2,15 @@
 import routes from "../utils/routes.ts";
 ---
 
-<nav class="bg-slate-900">
-  <ul>
+<nav class="bg-slate-900 flex px-10 py-3 items-center justify-between">
+  <a href="/">
+    <img src="/favicon.svg" alt="astro-icon" width="45px" height="45px" />
+  </a>
+  <ul class="flex gap-10">
     {
       routes.map((route) => (
         <li>
-          <a class="text-white font-oswald" href={route.path}>
+          <a class="text-white font-oswald uppercase" href={route.path}>
             {route.name}
           </a>
         </li>
