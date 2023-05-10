@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/BaseLayout.astro";
 import Table from "@components/Table.tsx";
+import CarForm from "@components/cars/Form.astro";
 
 const response = await fetch("http://localhost:9000/api/cars/all").then(
   (data) => data.json()
@@ -10,9 +11,36 @@ const response = await fetch("http://localhost:9000/api/cars/all").then(
 <Layout title="Dyamic Route - Research Astro">
   <div class="flex flex-col gap-2">
     <div class="flex gap-3 w-1/2 self-end mr-3">
-      <button class="btn w-1/2">Add</button>
-      <button class="btn w-1/2">remove</button>
+      <button id="add-btn" class="btn w-1/2">Add</button>
+      <button class="btn w-1/2">remove ( to be added )</button>
     </div>
     <Table cars={response.data} client:visible />
   </div>
+
+  <dialog data-add-car class="rounded-lg">
+    <CarForm />
+  </dialog>
 </Layout>
+
+<script>
+  const addBtn: HTMLButtonElement | null = document.querySelector("#add-btn");
+  const formDialog: HTMLDialogElement | null =
+    document.querySelector("[data-add-car]");
+
+  addBtn?.addEventListener("click", () => {
+    formDialog?.showModal();
+  });
+
+  //For automatic close of dialog if clicked outside.
+  formDialog?.addEventListener("click", (event) => {
+    const dialogDimensions = formDialog.getBoundingClientRect();
+    if (
+      event.clientX < dialogDimensions.left ||
+      event.clientX > dialogDimensions.right ||
+      event.clientY < dialogDimensions.top ||
+      event.clientY > dialogDimensions.bottom
+    ) {
+      formDialog.close();
+    }
+  });
+</script>

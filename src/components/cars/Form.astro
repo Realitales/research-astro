@@ -1,0 +1,67 @@
+---
+const fields = [
+  {
+    label: "Name",
+    data: "name",
+  },
+  {
+    label: "Model",
+    data: "model",
+  },
+  {
+    label: "Year",
+    data: "year",
+  },
+];
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const formData = data.get("name");
+
+    console.log(formData);
+  } catch (error) {
+    console.log(error);
+  }
+}
+---
+
+<form class="flex flex-col gap-3" method="POST">
+  {
+    fields.map((field) => (
+      <div class="flex gap-1 flex-col">
+        <label for={field.data}>{field.label}</label>
+        <input
+          class="p-2 rounded-md"
+          type="text"
+          name={field.data}
+          id={field.data}
+        />
+      </div>
+    ))
+  }
+  <button
+    id="save-btn"
+    class="btn btn-sm btn-success text-white capitalize self-end"
+    type="submit"
+  >
+    Save
+  </button>
+</form>
+
+<script>
+  const saveBtn: HTMLButtonElement | null = document.querySelector("#save-btn");
+  const nameField: HTMLInputElement | null = document.querySelector("#name");
+  const modelField: HTMLInputElement | null = document.querySelector("#model");
+  const yearField: HTMLInputElement | null = document.querySelector("#year");
+
+  saveBtn?.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    const newCar = {
+      name: nameField?.value,
+      model: modelField?.value,
+      year: yearField?.value,
+    };
+  });
+</script>
