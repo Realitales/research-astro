@@ -14,7 +14,7 @@ const response = await fetch("http://localhost:9000/api/cars/all").then(
       <button id="add-btn" class="btn w-1/2">Add</button>
       <button class="btn w-1/2">remove ( to be added )</button>
     </div>
-    <Table cars={response.data} client:visible />
+    <!-- <Table cars={response.data} client:idle /> -->
   </div>
 
   <dialog data-add-car class="rounded-lg">

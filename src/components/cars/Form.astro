@@ -13,17 +13,6 @@ const fields = [
     data: "year",
   },
 ];
-
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    const formData = data.get("name");
-
-    console.log(formData);
-  } catch (error) {
-    console.log(error);
-  }
-}
 ---
 
 <form class="flex flex-col gap-3" method="POST">
@@ -64,11 +53,6 @@ if (Astro.request.method === "POST") {
       year: yearField?.value,
     };
 
-    const response = await fetch("http://localhost:9000/api/cars/create", {
-      method: "POST",
-      body: JSON.stringify(newCar),
-    }).then((data) => data.json());
-
-    console.log(response);
+    console.log(newCar);
   });
 </script>
