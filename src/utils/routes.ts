@@ -4,7 +4,6 @@ interface Routes {
 }
 
 //Use this file to add and modify routes.
-
 export const routes: Routes[] = [
   {
     name: "about",

@@ -1,7 +1,38 @@
 ---
 import Layout from "@layouts/BaseLayout.astro";
+
+interface Cars {
+  name: string;
+  model: string;
+  year: string;
+}
+
+const response = await fetch("http://localhost:9000/api/cars/all").then(
+  (data) => data.json()
+);
 ---
 
-<Layout title="Research Astro - Dyamic Route">
-  <h1>/cars route</h1>
+<Layout title="Dyamic Route - Research Astro">
+  <div>
+    <table class="table w-1/2">
+      <thead>
+        <tr class="text-center">
+          <th>name</th>
+          <th>model</th>
+          <th>year</th>
+        </tr>
+      </thead>
+      <tbody>
+        {
+          response.data.map((car: Cars) => (
+            <tr>
+              <td>{car.name}</td>
+              <td>{car.model}</td>
+              <td>{car.year}</td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
 </Layout>
