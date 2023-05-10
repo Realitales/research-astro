@@ -12,8 +12,10 @@ export default function Table({ cars }: { cars: Cars[] }) {
       </thead>
       <tbody>
         {cars.map((car: Cars) => (
-          <tr className="text-center">
-            <td>{car.name}</td>
+          <tr key={car.model} className="text-center">
+            <td>
+              <a href={`/cars/${car.id}`}>{car.name} </a>
+            </td>
             <td>{car.model}</td>
             <td>{car.year}</td>
           </tr>

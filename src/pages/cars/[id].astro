@@ -1,0 +1,24 @@
+---
+import type Cars from "src/types/Cars";
+import Layout from "@layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const response = await fetch("http://localhost:9000/api/cars/all").then(
+    (data) => data.json()
+  );
+
+  return response.data.map((car: Cars) => {
+    return {
+      params: { id: car.id },
+      props: { name: car.name },
+    };
+  });
+}
+
+const { id } = Astro.params;
+const { name } = Astro.props;
+---
+
+<Layout title={`${name} - Research Astro`}>
+  <h1>{id}</h1>
+</Layout>
