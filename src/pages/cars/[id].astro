@@ -1,13 +1,14 @@
 ---
 import type Cars from "src/types/Cars";
 import Layout from "@layouts/BaseLayout.astro";
+import cars from "../../utils/cars.json";
 
 export async function getStaticPaths() {
-  const response = await fetch("http://localhost:9000/api/cars/all").then(
-    (data) => data.json()
-  );
+  //   const response = await fetch("http://localhost:9000/api/cars/all").then(
+  //     (data) => data.json()
+  //   );
 
-  return response.data.map((car: Cars) => {
+  return cars.map((car: Cars) => {
     return {
       params: { id: car.id },
       props: { name: car.name },

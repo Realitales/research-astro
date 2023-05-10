@@ -2,10 +2,16 @@
 import Layout from "@layouts/BaseLayout.astro";
 import Table from "@components/Table.tsx";
 import CarForm from "@components/cars/Form.astro";
+import cars from "../../utils/cars.json";
 
-const response = await fetch("http://localhost:9000/api/cars/all").then(
-  (data) => data.json()
-);
+//For server test only.
+// const response = await fetch("http://localhost:9000/api/cars/all").then(
+//   (data) => data.json()
+// );
+
+const response = {
+  data: cars,
+};
 ---
 
 <Layout title="Dyamic Route - Research Astro">
@@ -14,7 +20,7 @@ const response = await fetch("http://localhost:9000/api/cars/all").then(
       <button id="add-btn" class="btn w-1/2">Add</button>
       <button class="btn w-1/2">remove ( to be added )</button>
     </div>
-    <!-- <Table cars={response.data} client:idle /> -->
+    <Table cars={response.data} client:idle />
   </div>
 
   <dialog data-add-car class="rounded-lg">
